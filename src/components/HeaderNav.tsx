@@ -19,11 +19,11 @@ const HeaderNav: React.FC = () => {
         <div className='ml-4 hidden md:block text-2xl leading-[1.1111111111]'>
           <Link href='/'>classpass</Link>
         </div>
-        <div className='mr-4 hidden md:flex items-center text-sm gap-3'>
+        <div className='mr-4 hidden md:flex items-center text-sm gap-6'>
           <Link href='#'>Find classes & appointments</Link>
           <Link href='#'>Plans</Link>
           <Link href='#'>How credits work</Link>
-          <Link href='#'>Log in</Link>
+          <Link href='/login'>Log in</Link>
           <Link href='/walkthrough/getclasspass' className='bg-blue-600 text-white font-medium pt-3 pr-4 pb-2 pl-4 rounded-full'>Try for ₱50</Link>
         </div>
       </div>
