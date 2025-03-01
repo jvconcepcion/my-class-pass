@@ -1,11 +1,14 @@
+import { SvgComponentProps } from '@lib/types';
 import React from 'react';
 
-const ArrowDown: React.FC = () => {
+const ArrowDown: React.FC<SvgComponentProps> = ({
+  color = 'none'
+}) => {
   return (
     <>
       <svg width='24'
         height='24'
-        fill='none'
+        fill={color}
         xmlns='http://www.w3.org/2000/svg'>
         <path fill-rule='evenodd'
           clip-rule='evenodd'

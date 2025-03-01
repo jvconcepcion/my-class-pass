@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DLOnPlaystore = () => {
+const DLOnPlaystore: React.FC = () => {
   return (
     <>
       <svg viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg">

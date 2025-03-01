@@ -14,11 +14,11 @@
     @apply bg-black;
   }
 }
-
+/* 
 html, body {
   overscroll-behavior: none;
   overflow-x: hidden;
-}
+} */
 
 /* * {
   font-family: Verdana, 'Trebuchet MS', sans-serif;
