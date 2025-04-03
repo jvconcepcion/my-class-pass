@@ -1,8 +1,30 @@
-import React from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { getWixClient } from '@/lib/wixClient';
 import { Footer, Svg, Button } from '@components';
+import Link from 'next/link';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  // const loginWithGoogle = async () => {
+  //   const wixClient = getWixClient();
+    
+  //   const redirectUri = `${window.location.origin}/login-callback`; // This must match Wix settings
+  //   const data = wixClient.auth.generateOAuthData(redirectUri, window.location.href);
+  
+  //   localStorage.setItem('oauthRedirectData', JSON.stringify(data));
+  
+  //   const { authUrl } = await wixClient.auth.getAuthUrl({
+  //     ...data,
+  //     provider: 'google', // Specifies Google Sign-In
+  //   });
+  
+  //   window.location.href = authUrl; // Redirect user to Google login via Wix
+  // };
+
   return (
     <>
       <main>
@@ -16,7 +38,13 @@ export default function Login() {
                     <Svg component='ios' color='white' />
                   </span>
                 </Button>
-                <Button label= 'Sign in with Google' borderColor='black' backgroundColor='white' fontColor='black'>
+                <Button 
+                  label= 'Sign in with Google' 
+                  borderColor='black' 
+                  backgroundColor='white' 
+                  fontColor='black'
+                  // onClick={loginWithGoogle}
+                >
                   <span className='ml-4 flex-shrink-0'>
                     <Svg component='google' />
                   </span>

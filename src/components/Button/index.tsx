@@ -8,6 +8,7 @@ const Button: React.FC<ButtonProps> = ({
   backgroundColor = 'black',
   fontColor = 'white',
   className,
+  onClick,
   children
 }) => {
 
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
     <button 
       className={clsx('w-full border text-sm rounded-sm flex items-center justify-center mt-2 leading-none py-3', className)}
       style={{ borderColor, backgroundColor, color: fontColor }}
+      onClick={onClick}
     >
       {children}
       <span className='flex-1 text-center'>{label}</span>

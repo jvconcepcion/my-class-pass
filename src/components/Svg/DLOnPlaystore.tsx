@@ -6,12 +6,12 @@ const DLOnPlaystore: React.FC = () => {
       <svg viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg">
         <title>Download ClassPass for Android</title>
         <path fill="none" d="M0 0h135v40H0z" />
-        <g fill="none" fill-rule="evenodd">
+        <g fill="none" fillRule="evenodd">
           <mask id="en-light_svg__border-mask">
             <rect fill="#fff" width="100%" height="100%" />
             <path fill="#000" d="M134.032 35.268a3.83 3.83 0 0 1-3.834 3.83H4.729a3.835 3.835 0 0 1-3.839-3.83V4.725A3.84 3.84 0 0 1 4.729.89h125.468a3.834 3.834 0 0 1 3.834 3.835l.001 30.543z" />
           </mask>
-          <g mask="url(#en-light_svg__border-mask)" stroke="#fff" stroke-width="2">
+          <g mask="url(#en-light_svg__border-mask)" stroke="#fff" strokeWidth="2">
             <path d="M5 40c-2.75 0-5-2.25-5-5V5c0-2.75 2.25-5 5-5h125c2.75 0 5 2.25 5 5v30c0 2.75-2.25 5-5 5H5Z" />
           </g>
         </g>

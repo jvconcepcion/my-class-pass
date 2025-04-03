@@ -1,3 +1,10 @@
+import { services } from '@wix/bookings';
+
+export interface HeaderNavProps {
+  pathname: string;
+  children?: React.JSX.Element | React.JSX.Element[];
+}
+
 export interface AboutSlideProps {
   title: string;
   description: string;
@@ -15,5 +22,83 @@ export interface ButtonProps {
   backgroundColor?: string;
   fontColor?: string;
   className?: string;
-  children?: React.JSX.Element | React.JSX.Element[]
+  onClick?: any;
+  children?: React.JSX.Element | React.JSX.Element[];
 }
+
+export interface ServiceListProps {
+  [key: string]: any;
+}
+
+export interface AvailabilityListProps {
+  [key: string]: any;
+}
+
+export interface CardProps {
+  [key: string]: any;
+}
+
+export interface MapProps {
+  [key: string]: any;
+}
+
+export interface ImageCardProps {
+  url: string;
+  width: number;
+  height: number;
+  className?: string;
+};
+
+export interface LocationData {
+  formatted: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
+export interface TextInputProps {
+  id: string;
+  label: string;
+  type?: string;
+  sx?: SxProps<Theme>;
+  autoFocus?: boolean;
+  className?: string;
+  autoComplete?: string;
+}
+
+export interface NormalizedLocation {
+  lat: number;
+  lng: number;
+  title: string;
+};
+
+export interface StudioAddressCardProps {
+  data?: any;
+  width: number;
+  height: number;
+  className?: string;
+};
+
+export interface ScheduleCardProps {
+  [key: string]: any;
+};
+
+export interface SlotAvailability {
+  slot: {
+    resource: {
+      name: string;
+    };
+  };
+}
+
+export interface TruncateResult {
+  text: string;
+  isTruncated: boolean;
+};
+
+export interface TruncatedTextProps {
+  text: string;
+  maxSentences?: number;
+  withReadMore?: boolean;
+};

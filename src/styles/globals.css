@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('mapbox-gl/dist/mapbox-gl.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
+  .before-custom-divider::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: -1px;
+    width: 1px;
+    height: calc(100% - 16px);
+    background-color: #d6d6d6;
+  }
+  
   .custom-pagination .swiper-pagination-bullet {
     @apply bg-gray-400 w-2 h-2 rounded-full mx-1 transition-colors duration-500 ease-in-out;
   }
@@ -13,7 +25,21 @@
   .custom-pagination .swiper-pagination-bullet-active {
     @apply bg-black;
   }
+
 }
+
+.mapboxgl-control-container {
+  display: none !important;
+}
+
+.mapboxgl-popup-content {
+  padding: 10px;
+}
+
+.mapboxgl-popup-close-button {
+  margin-right: 5px;
+}
+
 /* 
 html, body {
   overscroll-behavior: none;

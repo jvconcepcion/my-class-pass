@@ -102,7 +102,7 @@ export default function GetClassPass() {
 
             {/* Skip to Sign Up / Learn More */}
             <span>
-              <Link href='#' className='text-[#111] font-medium underline text-sm'>
+              <Link href='/member-signup/getclasspass' className='text-[#111] font-medium underline text-sm'>
                 {activeIndex === aboutSlide.length - 1 ? 'Learn how credits work' : 'Skip straight to sign up'}
               </Link>
             </span>

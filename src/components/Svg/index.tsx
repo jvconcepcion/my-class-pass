@@ -1,4 +1,5 @@
 import Check from './Check';
+import Close from './Close';
 import Apple from './Apple';
 import Google from './Google';
 import ArrowDown from './ArrowDown';
@@ -11,6 +12,9 @@ import Pinterest from './Pinterest';
 import Spotify from './Spotify';
 import clsx from 'clsx';
 import Planet from './Planet';
+import Magnifier from './Magnifier';
+import Location from './Location';
+import Address from './Address';
 
 interface SvgProps {
   component: string;
@@ -26,6 +30,7 @@ const Svg: React.FC<SvgProps> = ({
   return (
     <div className={clsx(className)}>
       {component === 'check' && <Check color={color} />}
+      {component === 'close' && <Close color={color} />}
       {component === 'ios' && <Apple color={color} />}
       {component === 'google' && <Google />}
       {component === 'arrowdown' && <ArrowDown color={color} />}
@@ -37,6 +42,9 @@ const Svg: React.FC<SvgProps> = ({
       {component === 'pinterest' && <Pinterest color={color} />}
       {component === 'spotify' && <Spotify color={color} />}
       {component === 'planet' && <Planet />}
+      {component === 'magnifier' && <Magnifier />}
+      {component === 'location' && <Location />}
+      {component === 'address' && <Address />}
     </div>
   )
 }
