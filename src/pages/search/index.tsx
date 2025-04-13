@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { getWixClient } from '@/lib/wixClient';
+import { getWixClient } from '@lib/wixClient';
 import { ServiceCard, Map } from '@components';
 import { ServiceListProps } from '@lib/types';
 import { SearchContext } from '@lib/context';

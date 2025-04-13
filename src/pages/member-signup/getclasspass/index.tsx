@@ -1,14 +1,48 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { Box, FormControlLabel, Switch } from '@mui/material';
 import { TextInput, Button, LocationDetector } from '@components';
+import { getWixClient } from '@lib/wixClient';
+import { ServiceListProps } from '@lib/types';
+import Link from 'next/link';
 import CheckIcon from '@mui/icons-material/Check';
 
+const wixClient = getWixClient();
+
+export interface RegistrationProps {
+  contactInfo: {
+    [key: string]: string;
+  },
+  privacyStatus: string;
+};
+
 export default function SignUpClassPass() {
-  const [isPublic, setIsPublic] = useState(true);
+  const [isPublic, setIsPublic] = useState<boolean>(true);
+  const [serviceList, setServiceList] = useState<ServiceListProps[]>([]);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [options, setOptions] = useState<RegistrationProps>({
+    contactInfo: {
+      firstName: '',
+      lastName: '',
+    },
+    privacyStatus: ''
+  });
 
   const handleToggleStatus = () => {
     setIsPublic((prev) => !prev);
+  };
+
+  const fetchServices = () => {
+    try {
+      const serviceData = wixClient.auth.register
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    }
+  };
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(e)
   };
 
   return (
@@ -36,8 +70,8 @@ export default function SignUpClassPass() {
           autoComplete='off'
         >
           <div className='flex flex-col gap-y-4 text-sm'>
-            <TextInput id='outlined-email' label='Email Address' />
-            <TextInput id='outlined-password' label='Password' type='password' autoComplete='current-password' />
+            <TextInput id='outlined-email' type='email' label='Email Address' />
+            <TextInput id='outlined-password' type='password' label='Password' autoComplete='current-password' />
             <TextInput id='outlined-fname' label='Firstname' />
             <TextInput id='outlined-lname' label='Lastname' />
             <FormControlLabel
@@ -51,13 +85,13 @@ export default function SignUpClassPass() {
               label={isPublic ? 'Public' : 'Private'}
             />
             <div className='flex justify-center'>
-              <Button label='Sign up' borderColor='#05f' backgroundColor='#05f' fontColor='white'/>
+              <Button label='Sign up' borderColor='#05f' backgroundColor='#05f' fontColor='white' />
             </div>
           </div>
         </Box>
 
         <div className='flex flex-col gap-y-4'>
-          <p 
+          <p
             className='text-xs border-b pb-5'
           >By getting started, you agree to our <Link href='#' className='text-blue-500'>Terms of Use</Link> and <Link href='#' className='text-blue-500'>Privacy Policy</Link>.</p>
           <LocationDetector />

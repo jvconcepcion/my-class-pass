@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { services } from '@wix/bookings';
 
 export interface HeaderNavProps {
@@ -65,6 +66,8 @@ export interface TextInputProps {
   autoFocus?: boolean;
   className?: string;
   autoComplete?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export interface NormalizedLocation {
