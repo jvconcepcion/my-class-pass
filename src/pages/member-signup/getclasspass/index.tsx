@@ -25,11 +25,20 @@ export default function SignUpClassPass() {
       firstName: '',
       lastName: '',
     },
-    privacyStatus: ''
+    privacyStatus: 'PUBLIC'
   });
 
+  const { contactInfo, privacyStatus } = options;
+  const isFormValid =  email.trim().length >= 5 &&
+    password.trim().length >= 6 &&
+    contactInfo.firstName.trim().length >= 2 &&
+    contactInfo.lastName.trim().length >= 2;
+
   const handleToggleStatus = () => {
-    setIsPublic((prev) => !prev);
+    setOptions(prevState => ({
+      ...prevState,
+      privacyStatus: prevState.privacyStatus === 'PRIVATE' ? 'PUBLIC' : 'PRIVATE',
+    }))
   };
 
   const fetchServices = () => {
@@ -42,7 +51,35 @@ export default function SignUpClassPass() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(e)
+    const { firstName, lastName } = contactInfo;
+    const status = { // necessary as wix declare privacyStatus as enum
+      PUBLIC: 'PUBLIC',
+      PRIVATE: 'PRIVATE'
+    }
+    
+    try {
+      // const response = await wixClient.auth.register({
+      //   email,
+      //   password,
+      //   profile: {
+      //     firstName,
+      //     lastName,
+      //     privacyStatus: privacyStatus === 'PUBLIC' ? PrivacyStatus.PUBLIC : PrivacyStatus.PRIVATE,
+      //   }
+      // });
+
+      console.log({
+        email,
+        password,
+        profile: {
+          firstName,
+          lastName,
+          privacyStatus: privacyStatus === 'PUBLIC' ? status.PUBLIC : status.PRIVATE,
+        }
+      })
+    } catch (error) {
+      console.error('Failed to Register. Please try again! :', error);
+    }
   };
 
   return (
@@ -68,24 +105,69 @@ export default function SignUpClassPass() {
           component='form'
           noValidate
           autoComplete='off'
+          onSubmit={submit}
         >
           <div className='flex flex-col gap-y-4 text-sm'>
-            <TextInput id='outlined-email' type='email' label='Email Address' />
-            <TextInput id='outlined-password' type='password' label='Password' autoComplete='current-password' />
-            <TextInput id='outlined-fname' label='Firstname' />
-            <TextInput id='outlined-lname' label='Lastname' />
+            <TextInput 
+              id='outlined-email' 
+              type='email' 
+              label='Email Address' 
+              value={email} onChange={(e) => setEmail(e.target.value)} 
+            />
+            <TextInput 
+              id='outlined-password' 
+              type='password' 
+              label='Password' 
+              autoComplete='current-password' 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+            />
+            <TextInput
+              id='outlined-fname'
+              label='Firstname'
+              value={contactInfo.firstName}
+              onChange={(e) => setOptions((prevState) => ({
+                ...prevState,
+                contactInfo: {
+                  ...prevState.contactInfo,
+                  firstName: e.target.value,
+                },
+              }))}
+            />
+            <TextInput 
+              id='outlined-lname' 
+              label='Lastname'
+              value={contactInfo.lastName}
+              onChange={(e) => setOptions((prevState) => ({
+                ...prevState,
+                contactInfo: {
+                  ...prevState.contactInfo,
+                  lastName: e.target.value,
+                },
+              }))}
+            />
             <FormControlLabel
               control={
                 <Switch
-                  checked={isPublic}
+                  checked={privacyStatus === 'PRIVATE'}
                   onChange={handleToggleStatus}
                   color='primary'
                 />
               }
-              label={isPublic ? 'Public' : 'Private'}
+              label={
+                <span className='capitalize'>
+                  {options.privacyStatus.toLowerCase()}
+                </span>
+              }
             />
             <div className='flex justify-center'>
-              <Button label='Sign up' borderColor='#05f' backgroundColor='#05f' fontColor='white' />
+              <Button 
+                label='Sign up' 
+                borderColor='#05f' 
+                backgroundColor='#05f' 
+                fontColor='white'
+                disabled={!isFormValid}
+              />
             </div>
           </div>
         </Box>

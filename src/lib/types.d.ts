@@ -25,6 +25,7 @@ export interface ButtonProps {
   className?: string;
   onClick?: any;
   children?: React.JSX.Element | React.JSX.Element[];
+  disabled?: boolean;
 }
 
 export interface ServiceListProps {

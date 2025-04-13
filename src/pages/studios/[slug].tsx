@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getWixClient } from '@/lib/wixClient';
+import { getWixClient } from '@lib/wixClient';
 import { AvailabilityListProps, ScheduleCardProps, ServiceListProps } from '@lib/types';
 import { media } from '@wix/sdk';
 import { Footer, ImageCard, ScheduleCard, StudioAddressCard, Svg, TruncatedText } from '@components';
