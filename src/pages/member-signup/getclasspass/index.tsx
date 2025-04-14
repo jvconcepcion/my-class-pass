@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Box, FormControlLabel, Switch } from '@mui/material';
+import React, { useState, useRef, useEffect } from 'react';
+import { Box, FormControlLabel, Switch, Tooltip, Typography, IconButton  } from '@mui/material';
 import { TextInput, Button, LocationDetector } from '@components';
 import { getWixClient } from '@lib/wixClient';
 import { ServiceListProps } from '@lib/types';
+import { PrivacyStatus } from '@lib/enums';
+import { Check, SpeakerNotes, Visibility, VisibilityOff } from '@mui/icons-material';
 import Link from 'next/link';
-import CheckIcon from '@mui/icons-material/Check';
 
 const wixClient = getWixClient();
 
@@ -18,6 +19,7 @@ export interface RegistrationProps {
 export default function SignUpClassPass() {
   const [isPublic, setIsPublic] = useState<boolean>(true);
   const [serviceList, setServiceList] = useState<ServiceListProps[]>([]);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [options, setOptions] = useState<RegistrationProps>({
@@ -28,11 +30,23 @@ export default function SignUpClassPass() {
     privacyStatus: 'PUBLIC'
   });
 
+  const Note = (
+    <div className='text-xs space-y-1'>
+      <p>All fields are required:</p>
+      <ul className='list-disc pl-5'>
+        <li>Email Address must be at least 12 characters.</li>
+        <li>Password must be at least 16 characters.</li>
+        <li>First Name must be at least 4 characters.</li>
+        <li>Last Name must be at least 4 characters.</li>
+      </ul>
+    </div>
+  );
   const { contactInfo, privacyStatus } = options;
-  const isFormValid =  email.trim().length >= 5 &&
-    password.trim().length >= 6 &&
-    contactInfo.firstName.trim().length >= 2 &&
-    contactInfo.lastName.trim().length >= 2;
+  const isFormValid =
+    email.trim().length >= 12 &&
+    password.trim().length >= 16 &&
+    contactInfo.firstName.trim().length >= 4 &&
+    contactInfo.lastName.trim().length >= 4;
 
   const handleToggleStatus = () => {
     setOptions(prevState => ({
@@ -52,21 +66,17 @@ export default function SignUpClassPass() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { firstName, lastName } = contactInfo;
-    const status = { // necessary as wix declare privacyStatus as enum
-      PUBLIC: 'PUBLIC',
-      PRIVATE: 'PRIVATE'
-    }
-    
+
     try {
-      // const response = await wixClient.auth.register({
-      //   email,
-      //   password,
-      //   profile: {
-      //     firstName,
-      //     lastName,
-      //     privacyStatus: privacyStatus === 'PUBLIC' ? PrivacyStatus.PUBLIC : PrivacyStatus.PRIVATE,
-      //   }
-      // });
+      //   const response = await wixClient.auth.register({
+      //     email,
+      //     password,
+      //     profile: {
+      //       firstName,
+      //       lastName,
+      //       privacyStatus: privacyStatus === 'PUBLIC' ? PrivacyStatus.PUBLIC : PrivacyStatus.PRIVATE,
+      //     }
+      //   });
 
       console.log({
         email,
@@ -74,7 +84,7 @@ export default function SignUpClassPass() {
         profile: {
           firstName,
           lastName,
-          privacyStatus: privacyStatus === 'PUBLIC' ? status.PUBLIC : status.PRIVATE,
+          privacyStatus: privacyStatus === 'PUBLIC' ? PrivacyStatus.PUBLIC : PrivacyStatus.PRIVATE,
         }
       })
     } catch (error) {
@@ -92,15 +102,15 @@ export default function SignUpClassPass() {
 
         <div>
           <ul className='flex flex-col gap-y-5 text-sm'>
-            <li><CheckIcon className='mr-2 text-sm' /> Get 28 credits to visit a selection of our best studios & gyms one time each.</li>
-            <li><CheckIcon className='mr-2 text-sm' /> Credits expire at the end of your trial.</li>
-            <li><CheckIcon className='mr-2 text-sm' /> We'll send you an email reminder before your trial ends. Cancel anytime.</li>
-            <li><CheckIcon className='mr-2 text-sm' /> Upgrade anytime to unlock access to salons & spas as well as repeat bookings.</li>
+            <li><Check className='mr-2 text-sm' /> Get 28 credits to visit a selection of our best studios & gyms one time each.</li>
+            <li><Check className='mr-2 text-sm' /> Credits expire at the end of your trial.</li>
+            <li><Check className='mr-2 text-sm' /> We'll send you an email reminder before your trial ends. Cancel anytime.</li>
+            <li><Check className='mr-2 text-sm' /> Upgrade anytime to unlock access to salons & spas as well as repeat bookings.</li>
           </ul>
         </div>
       </div>
 
-      <div className='rounded flex flex-col p-6 bg-white gap-y-5 h-[569px]'>
+      <div className='rounded flex flex-col p-6 bg-white gap-y-5 h-[582px]'>
         <Box
           component='form'
           noValidate
@@ -108,19 +118,44 @@ export default function SignUpClassPass() {
           onSubmit={submit}
         >
           <div className='flex flex-col gap-y-4 text-sm'>
-            <TextInput 
-              id='outlined-email' 
-              type='email' 
-              label='Email Address' 
-              value={email} onChange={(e) => setEmail(e.target.value)} 
+            <div className='border-b border-[#f4f4f4] flex items-center mb-2'>
+              <Typography variant='caption'>
+                Note
+                <Tooltip key='note' title={Note} placement='right-start'>
+                  <SpeakerNotes className='text-xs text-black/70 ml-1' />
+                </Tooltip>
+              </Typography>
+            </div>
+            <TextInput
+              id='outlined-email'
+              type='email'
+              label='Email Address'
+              value={email} onChange={(e) => setEmail(e.target.value)}
             />
-            <TextInput 
-              id='outlined-password' 
-              type='password' 
-              label='Password' 
-              autoComplete='current-password' 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
+            <TextInput
+              id='outlined-password'
+              type={showPassword ? 'text' : 'password'}
+              label='Password'
+              autoComplete='current-password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              endAdornment={(
+                <IconButton
+                  aria-label={
+                    showPassword ? 'hide the password' : 'display the password'
+                  }
+                  sx={{
+                    '&:hover': {
+                      backgroundColor: 'transparent',
+                    },
+                  }}
+                  onClick={() => setShowPassword((show) => !show)}
+                  edge='end'
+                  className='m-0'
+                >
+                  {showPassword ? <VisibilityOff className='text-sm m-0' /> : <Visibility className='text-sm m-0' />}
+                </IconButton>
+              )}
             />
             <TextInput
               id='outlined-fname'
@@ -134,8 +169,8 @@ export default function SignUpClassPass() {
                 },
               }))}
             />
-            <TextInput 
-              id='outlined-lname' 
+            <TextInput
+              id='outlined-lname'
               label='Lastname'
               value={contactInfo.lastName}
               onChange={(e) => setOptions((prevState) => ({
@@ -161,10 +196,10 @@ export default function SignUpClassPass() {
               }
             />
             <div className='flex justify-center'>
-              <Button 
-                label='Sign up' 
-                borderColor='#05f' 
-                backgroundColor='#05f' 
+              <Button
+                label='Sign up'
+                borderColor='#05f'
+                backgroundColor='#05f'
                 fontColor='white'
                 disabled={!isFormValid}
               />

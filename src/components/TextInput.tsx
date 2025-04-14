@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { SxProps, TextField, Theme } from '@mui/material';
+import { OutlinedInput, InputLabel, FormControl, InputAdornment } from '@mui/material';
 import { TextInputProps } from '@lib/types';
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -12,10 +12,10 @@ const TextInput: React.FC<TextInputProps> = ({
       padding: '0',
     },
     '& .MuiInputBase-input': {
-      padding: '11px 8px 8px',
+      padding: '8px 8px 8px',
     },
     '& .MuiFormLabel-root': {
-      top: '-4px'
+      top: '-6px'
     }
   },
   autoFocus = false,
@@ -23,6 +23,7 @@ const TextInput: React.FC<TextInputProps> = ({
   autoComplete = '',
   value,
   onChange,
+  endAdornment,
 }) => {
   const [text, setText] = useState<string>('');
 
@@ -38,17 +39,24 @@ const TextInput: React.FC<TextInputProps> = ({
   };
 
   return (
-    <TextField
-      id={id}
-      label={label}
-      type={type}
-      sx={sx}
-      autoFocus={autoFocus}
-      className={clsx(className)}
-      autoComplete={autoComplete}
-      value={isControlled ? value : text}
-      onChange={handleChange}
-    />
+    <FormControl sx={sx} variant='outlined'>
+      <InputLabel htmlFor='outlined-textfield'>{label}</InputLabel>
+      <OutlinedInput
+        id={id}
+        label={label}
+        type={type}
+        autoFocus={autoFocus}
+        className={clsx(className)}
+        autoComplete={autoComplete}
+        value={isControlled ? value : text}
+        onChange={handleChange}
+        endAdornment={
+          <InputAdornment position='end'>
+            {endAdornment}
+          </InputAdornment>
+        }
+      />
+    </FormControl>
   )
 }
 

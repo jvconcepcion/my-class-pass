@@ -69,6 +69,7 @@ export interface TextInputProps {
   autoComplete?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  endAdornment?: React.JSX.Element | React.JSX.Element[];
 }
 
 export interface NormalizedLocation {
