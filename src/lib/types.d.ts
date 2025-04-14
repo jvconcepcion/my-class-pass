@@ -72,6 +72,17 @@ export interface TextInputProps {
   endAdornment?: React.JSX.Element | React.JSX.Element[];
 }
 
+type AlertColor = 'error' | 'info' | 'success' | 'warning';
+
+export interface NotificationBarProps {
+  open: boolean;
+  autoHideDuration?: number;
+  handleNotif: React.Dispatch<React.SetStateAction<boolean>>;
+  message?: string;
+  severity?: AlertColor;
+  sx?: SxProps<Theme>;
+};
+
 export interface NormalizedLocation {
   lat: number;
   lng: number;
@@ -107,3 +118,7 @@ export interface TruncatedTextProps {
   maxSentences?: number;
   withReadMore?: boolean;
 };
+
+export interface ProgressBarProps {
+  loading: boolean;
+}
