@@ -51,9 +51,11 @@ const TextInput: React.FC<TextInputProps> = ({
         value={isControlled ? value : text}
         onChange={handleChange}
         endAdornment={
-          <InputAdornment position='end'>
-            {endAdornment}
-          </InputAdornment>
+          endAdornment ?
+            <InputAdornment position='end'>
+              {endAdornment}
+            </InputAdornment>
+            : <></>
         }
       />
     </FormControl>

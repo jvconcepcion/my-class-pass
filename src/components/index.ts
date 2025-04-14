@@ -14,6 +14,8 @@ import StudioAddressCard from './StudioAddressCard';
 import ScheduleCard from './ScheduleCard';
 import TruncatedText from './TruncatedText';
 import LocationDetector from './LocationDetector';
+import NotificationBar from './NotificationBar';
+import ProgressBar from './ProgressBar';
 import Footer from './Footer';
 
 export {
@@ -33,5 +35,7 @@ export {
   StudioAddressCard,
   ScheduleCard,
   LocationDetector,
+  NotificationBar,
+  ProgressBar,
   Footer,
 }
