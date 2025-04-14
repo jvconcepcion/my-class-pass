@@ -45,7 +45,7 @@ const LocationDetector: React.FC = () => {
   return (
     <div className='text-center'>
       {address && (
-        <p className='mt-2 text-sm'>
+        <p className='mt-1 text-sm'>
           I'm in
           <span className='font-medium'> {address} </span>
           (<span className='text-blue-500 cursor-pointer'>Refresh Location</span>)
