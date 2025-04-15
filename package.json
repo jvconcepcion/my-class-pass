@@ -19,6 +19,7 @@
     "@wix/redirects": "^1.0.74",
     "@wix/sdk": "^1.15.13",
     "clsx": "^2.1.1",
+    "cookie": "^1.0.2",
     "js-cookie": "^3.0.5",
     "mapbox-gl": "^3.10.0",
     "moment": "^2.30.1",
