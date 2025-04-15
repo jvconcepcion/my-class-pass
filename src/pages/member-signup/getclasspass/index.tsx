@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   FormControlLabel,
   Switch,
   Tooltip,
   Typography,
-  IconButton,
-  LinearProgress
+  IconButton
 } from '@mui/material';
 import {
   TextInput,
@@ -16,20 +15,13 @@ import {
   ProgressBar
 } from '@components';
 import { getWixClient } from '@lib/wixClient';
-import { ServiceListProps } from '@lib/types';
+import { RegistrationProps, ServiceListProps } from '@lib/types';
 import { PrivacyStatus, SeverityStatus } from '@lib/enums';
 import { Check, SpeakerNotes, Visibility, VisibilityOff } from '@mui/icons-material';
-import { parseJSON } from '@lib/utils';
+import { isValidEmail, parseJSON } from '@lib/utils';
 import Link from 'next/link';
 
 const wixClient = getWixClient();
-
-export interface RegistrationProps {
-  contactInfo: {
-    [key: string]: string;
-  },
-  privacyStatus: string;
-};
 
 export default function SignUpClassPass() {
   const [isPublic, setIsPublic] = useState<boolean>(true);
@@ -66,7 +58,8 @@ export default function SignUpClassPass() {
 
   const isFormValid =
     email.trim().length >= 12 &&
-    password.trim().length >= 16 &&
+    isValidEmail(email) &&
+    password.trim().length >= 10 &&
     contactInfo.firstName.trim().length >= 4 &&
     contactInfo.lastName.trim().length >= 4;
 
@@ -183,7 +176,8 @@ export default function SignUpClassPass() {
                 id='outlined-email'
                 type='email'
                 label='Email Address'
-                value={email} onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextInput
                 id='outlined-password'
