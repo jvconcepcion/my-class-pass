@@ -4,12 +4,10 @@ import { getWixClient } from '@/lib/wixClient';
 import { Footer, Svg, Button, TextInput, ProgressBar, NotificationBar } from '@components';
 import {
   Box,
-  Tooltip,
-  Typography,
   IconButton
 } from '@mui/material';
 import { SeverityStatus } from '@lib/enums';
-import { Check, SpeakerNotes, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { isValidEmail, parseJSON } from '@lib/utils';
 import { LoggedInMemberContext } from '@lib/context';
 import Link from 'next/link';
@@ -17,12 +15,12 @@ import Link from 'next/link';
 const wixClient = getWixClient();
 
 export default function Login() {
-    const router = useRouter();
-    const loggedInMemberContext = useContext(LoggedInMemberContext);
-  
-    if (!loggedInMemberContext) {
-      throw new Error('LoggedInMemberContext is missing in the component tree');
-    }
+  const router = useRouter();
+  const loggedInMemberContext = useContext(LoggedInMemberContext);
+
+  if (!loggedInMemberContext) {
+    throw new Error('LoggedInMemberContext is missing in the component tree');
+  }
   const { loggedInMember, setLoggedInMember } = loggedInMemberContext;
   const [loading, setLoading] = useState<boolean>(false);
   const [openNotif, setOpenNotif] = useState<boolean>(false);

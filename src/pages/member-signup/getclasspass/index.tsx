@@ -84,14 +84,6 @@ export default function SignUpClassPass() {
     }))
   };
 
-  const fetchServices = () => {
-    try {
-      const serviceData = wixClient.auth.register
-    } catch (error) {
-      console.error('Error fetching services:', error);
-    }
-  };
-
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);

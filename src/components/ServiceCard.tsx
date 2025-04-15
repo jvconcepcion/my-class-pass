@@ -11,8 +11,6 @@ import {
   Typography,
 } from '@mui/material';
 import TruncatedText from './TruncatedText';
-// import { truncateText } from '@lib/utils';
-
 
 const ServiceCard: React.FC<CardProps> = ({ service }) => {
   const [toggleBtn, setToggleBtn] = useState<boolean>(true);
