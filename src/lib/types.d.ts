@@ -122,3 +122,10 @@ export interface TruncatedTextProps {
 export interface ProgressBarProps {
   loading: boolean;
 }
+
+export interface RegistrationProps {
+  contactInfo: {
+    [key: string]: string;
+  },
+  privacyStatus: string;
+};
