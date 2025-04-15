@@ -1,5 +1,16 @@
 import { ReactNode, useState } from 'react';
-import { SearchContext, MenuContext } from '@lib/context';
+import { LoggedInMemberContext, SearchContext, MenuContext } from '@lib/context';
+
+// Current Login Member
+export const LoggedInProvider = ({ children }: { children: ReactNode }) => {
+  const [loggedInMember, setLoggedInMember] = useState(null);
+
+  return (
+    <LoggedInMemberContext.Provider value={{ loggedInMember, setLoggedInMember }}>
+      {children}
+    </LoggedInMemberContext.Provider>
+  );
+};
 
 // 🟢 Search Provider
 export const SearchProvider = ({ children }: { children: ReactNode }) => {
@@ -27,7 +38,9 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
 
 // 🟢 Combine Providers for Cleaner Code
 export const Provider = ({ children }: { children: ReactNode }) => (
-  <SearchProvider>
-    <MenuProvider>{children}</MenuProvider>
-  </SearchProvider>
+  <LoggedInProvider>
+    <SearchProvider>
+      <MenuProvider>{children}</MenuProvider>
+    </SearchProvider>
+  </LoggedInProvider>
 );

@@ -1,9 +1,17 @@
 import { createContext } from 'react';
 
+// Current Login Member
+export interface LoggedInMemberType {
+  loggedInMember: any;
+  setLoggedInMember: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export const LoggedInMemberContext = createContext<LoggedInMemberType | null>(null);
+
 // Search Context
 export interface SearchContextType {
   searchTerm: string;
-  setSearchTerm: (value: string) => void;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SearchContext = createContext<SearchContextType | null>(null);
