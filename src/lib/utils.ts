@@ -8,3 +8,8 @@ export function parseJSON<T = any>(data: unknown): T | null {
     return null;
   }
 };
+
+export function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
