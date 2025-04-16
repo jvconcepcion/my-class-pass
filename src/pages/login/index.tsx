@@ -10,6 +10,7 @@ import { SeverityStatus } from '@lib/enums';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { isValidEmail, parseJSON } from '@lib/utils';
 import { LoggedInMemberContext } from '@lib/context';
+import { LocalNotifProps } from '@lib/types';
 import Link from 'next/link';
 
 const wixClient = getWixClient();
@@ -24,7 +25,7 @@ export default function Login() {
   const { loggedInMember, setLoggedInMember } = loggedInMemberContext;
   const [loading, setLoading] = useState<boolean>(false);
   const [openNotif, setOpenNotif] = useState<boolean>(false);
-  const [notifParams, setNotifParams] = useState({
+  const [notifParams, setNotifParams] = useState<LocalNotifProps>({
     message: '',
     severity: SeverityStatus.INFO
   });
@@ -89,7 +90,7 @@ export default function Login() {
         message: 'Connection Error. Please try again!',
         severity: SeverityStatus.ERROR,
       }));
-      console.error('Failed to Register:', error);
+      console.error('Connection Error. Please try again!', error);
     } finally {
       setLoading(false);
     }
@@ -154,14 +155,6 @@ export default function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  {/* <div className='flex flex-col gap-2'>
-                      <label className='text-[#555]'>Email address</label>
-                      <input type='text' name='email' className='border border-[#e7e7e7] rounded-[3px] shadow-none text-[16px] p-[11px_8px_8px] align-middle w-full' />
-                    </div> */}
-                  {/* <div className='flex flex-col gap-2'>
-                      <label className='text-[#555]'>Password</label>
-                      <input type='text' name='password' className='border border-[#e7e7e7] rounded-[3px] shadow-none text-[16px] p-[11px_8px_8px] align-middle w-full' />
-                    </div> */}
                   <TextInput
                     id='outlined-password'
                     type={showPassword ? 'text' : 'password'}
@@ -210,10 +203,8 @@ export default function Login() {
                 </div>
               </Box>
 
-              <p className='mb-6 text-[#05f] font-light text-[15px] text-center mt-6'><Link href='#'>Forgot your password?</Link></p>
+              <p className='mb-6 text-[#05f] font-light text-[15px] text-center mt-6'><Link href='/reset-password'>Forgot your password?</Link></p>
               <p className='mb-6 font-light text-[15px] text-center mt-6'>Looking for Facebook Sign In or having trouble logging in? Reach out to <Link href='#' className='text-[#05f]'>support</Link>.</p>
-              <hr className='mb-6 border-b border-[#e7e7e7]' />
-              <p className='mb-6 text-[#05f] font-light text-[15px] text-center mt-6'><Link href='#'>Partner Dashboard login</Link></p>
             </div>
           </div>
           <div className="mx-auto max-w-[350px] py-10 px-4 flex flex-col items-center text-center">

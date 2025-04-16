@@ -15,7 +15,7 @@ import {
   ProgressBar
 } from '@components';
 import { getWixClient } from '@lib/wixClient';
-import { RegistrationProps, ServiceListProps } from '@lib/types';
+import { LocalNotifProps, RegistrationProps } from '@lib/types';
 import { PrivacyStatus, SeverityStatus } from '@lib/enums';
 import { Check, SpeakerNotes, Visibility, VisibilityOff } from '@mui/icons-material';
 import { isValidEmail, parseJSON } from '@lib/utils';
@@ -24,11 +24,9 @@ import Link from 'next/link';
 const wixClient = getWixClient();
 
 export default function SignUpClassPass() {
-  const [isPublic, setIsPublic] = useState<boolean>(true);
-  const [serviceList, setServiceList] = useState<ServiceListProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [openNotif, setOpenNotif] = useState<boolean>(false);
-  const [notifParams, setNotifParams] = useState({
+  const [notifParams, setNotifParams] = useState<LocalNotifProps>({
     message: '',
     severity: SeverityStatus.INFO
   });
@@ -122,7 +120,7 @@ export default function SignUpClassPass() {
         message: 'Connection Error. Please try again!',
         severity: SeverityStatus.ERROR,
       }));
-      console.error('Failed to Register:', error);
+      console.error('Connection Error. Please try again!', error);
     } finally {
       setLoading(false);
     }

@@ -83,6 +83,11 @@ export interface NotificationBarProps {
   sx?: SxProps<Theme>;
 };
 
+export interface LocalNotifProps {
+  message: string;
+  severity?: AlertColor;
+}
+
 export interface NormalizedLocation {
   lat: number;
   lng: number;

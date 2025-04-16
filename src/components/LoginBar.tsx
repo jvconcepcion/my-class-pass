@@ -42,7 +42,7 @@ const LoginBar: React.FC = () => {
           {wixClient.auth?.loggedIn() ? "Log out" : "Log in"}
         </button>} */}
       {loggedInMember ? <span className='cursor-pointer' onClick={() => logout()}>Log out</span> : <Link href='/login'>Log in</Link>}
-      <Link href='/walkthrough/getclasspass' className='bg-blue-600 text-white font-medium pt-3 pr-4 pb-2 pl-4 rounded-full'>Try for ₱50</Link>
+      <Link href='/walkthrough/getclasspass' className='bg-blue-600 text-white font-medium pt-2 pr-4 pb-2 pl-4 rounded-full'>Try for ₱50</Link>
     </>
   )
 };
