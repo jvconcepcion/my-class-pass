@@ -104,31 +104,6 @@ export default function Login() {
           <div className='bg-white my-0 mx-4 md:px-10 md:shadow-[0_4px_12px_rgba(0,0,0,0.24)] md:w-1/2'>
             <div className='max-w-[350px] py-8 md:py-12 px-4 mx-auto'>
               <h3 className='mb-4 text-center text-2xl font-medium'>Welcome Back</h3>
-              <Button label='Sign in with Apple' borderColor='black' backgroundColor='black' fontColor='white'>
-                <span className='ml-4 flex-shrink-0'>
-                  <Svg component='ios' color='white' />
-                </span>
-              </Button>
-              <Button
-                label='Sign in with Google'
-                borderColor='black'
-                backgroundColor='white'
-                fontColor='black'
-              // onClick={loginWithGoogle}
-              >
-                <span className='ml-4 flex-shrink-0'>
-                  <Svg component='google' />
-                </span>
-              </Button>
-              {/* divider */}
-              <div className='flex items-center justify-center my-5 mx-0'>
-                <hr className='border-b border-[#e7e7e7] flex-1' />
-                <span className='bg-white py-0 px-2'>
-                  <span>or</span>
-                </span>
-                <hr className='border-b border-[#e7e7e7] flex-1' />
-              </div>
-
               <Box
                 component='form'
                 noValidate
