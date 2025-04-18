@@ -2,13 +2,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SearchBar from './SearchBar';
 import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
-import { useContext } from 'react';
+import {
+  Backdrop,
+  IconButton
+} from '@mui/material';
+import { useContext, useState } from 'react';
 import { HeaderNavProps } from '@lib/types';
 import { MenuContext } from '@lib/context';
 
 const HeaderNav: React.FC<HeaderNavProps> = ({ pathname, children }) => {
   const menuContext = useContext(MenuContext);
+  const [openNav, setOpenNav] = useState<boolean>(false);
 
   if (!menuContext) {
     throw new Error("MenuContext is missing in the component tree");

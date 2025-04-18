@@ -13,8 +13,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 
 export default function GetClassPass() {
-  const [isClient, setIsClient] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [isClient, setIsClient] = useState<boolean>(false);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const swiperMainRef = useRef<SwiperCore | null>(null);
   const swiperImageRef = useRef<SwiperCore | null>(null);

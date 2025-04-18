@@ -4,8 +4,8 @@ import moment from 'moment';
 const CountdownTimer: React.FC = () => {
   // Set target date (you can change the time too, like '2025-05-15T23:59:59')
   const targetDate = moment('2025-05-15T23:59:59');
-  const [timeLeft, setTimeLeft] = useState(targetDate.diff(moment()));
-  const [isToday, setIsToday] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number>(targetDate.diff(moment()));
+  const [isToday, setIsToday] = useState<boolean>(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
