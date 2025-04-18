@@ -101,7 +101,7 @@ export default function Login() {
       <ProgressBar loading={loading} />
       <main className='bg-[#f7f7f7]'>
         <div className='grid grid-cols-1 md:grid-cols-2 md:flex md:items-center md:mx-auto md:max-w-[62em] md:min-h-[calc(100vh-64px)] md:p-4'>
-          <div className='bg-white my-0 mx-4 md:px-10 md:shadow-[0_4px_12px_rgba(0,0,0,0.24)] md:w-1/2'>
+          <div className='bg-white mt-4 mx-4 md:px-10 md:shadow-[0_4px_12px_rgba(0,0,0,0.24)] md:w-1/2'>
             <div className='max-w-[350px] py-8 md:py-12 px-4 mx-auto'>
               <h3 className='mb-4 text-center text-2xl font-medium'>Welcome Back</h3>
               <Box
