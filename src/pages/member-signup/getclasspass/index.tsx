@@ -238,6 +238,7 @@ export default function SignUpClassPass() {
                   borderColor='#05f'
                   backgroundColor='#05f'
                   fontColor='white'
+                  className='rounded-sm'
                   disabled={!isFormValid || loading}
                 />
               </div>

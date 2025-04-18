@@ -172,7 +172,7 @@ export default function Login() {
                     borderColor='#05f' 
                     backgroundColor='#05f' 
                     fontColor='white' 
-                    className='py-4'
+                    className='py-4 rounded-sm'
                     disabled={!isFormValid || loading}
                   />
                 </div>
@@ -197,6 +197,7 @@ export default function Login() {
               borderColor='#05f'
               backgroundColor='transparent'
               fontColor='#05f'
+              className='rounded-sm'
               onClick={() => router.push('/member-signup/getclasspass')}
             />
           </div>

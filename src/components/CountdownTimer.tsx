@@ -6,8 +6,11 @@ const CountdownTimer: React.FC = () => {
   const targetDate = moment('2025-05-15T23:59:59');
   const [timeLeft, setTimeLeft] = useState<number>(targetDate.diff(moment()));
   const [isToday, setIsToday] = useState<boolean>(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
+
     const interval = setInterval(() => {
       const now = moment();
       const remaining = targetDate.diff(now);
@@ -24,6 +27,9 @@ const CountdownTimer: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [targetDate]);
+
+  // Prevent mismatch during SSR (Hydration failed error....)
+  if (!hasMounted) return null; 
 
   // Convert to duration and format properly
   const duration = moment.duration(timeLeft);

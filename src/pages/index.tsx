@@ -15,10 +15,9 @@ export default function Home() {
       <main className='max-w-md md:max-w-[1030px] mx-auto px-4 py-12 md:pt-40 md:pb-20 text-center'>
         <div className='mx-auto px-3 grid grid-cols-1 md:grid-cols-2 gap-10'>
           <div className=''>
-            {/* <div className='text-[0.875rem] leading-[1.4286] font-[500] flex items-center gap-20 self-stretch mb-4'>
+            <div className='text-[0.875rem] leading-[1.4286] font-[500] flex items-center gap-20 self-stretch mb-4'>
               Offer expires in<CountdownTimer />
-            </div> */}
-            {/* <h1 className='text-xl font-bold text-left '> */}
+            </div>
             <h1 className='text-[1.75rem] leading-[1.1429] font-poppins font-bold text-left mb-2'>
               <span className='text-black'>{`{sender_name}`}</span> sent you <span className='text-blue-600'>20 bonus credits!</span>
             </h1>
