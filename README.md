@@ -1,20 +1,24 @@
 # My Class Pass
 
-A **ClassPass clone** built with **Next.js** for personal use, intended to test various libraries and experiment with frontend development.
+**ClassPass clone** built with **Next.js 15**, intended for **personal experimentation** with frontend tools, UI frameworks, and third-party libraries. This project serves as a **sandbox environment** for testing and learning—not a production-ready application.
+
+> ⚠️ **Note:** Some UI buttons, links, and features may not function as expected. This app is primarily meant to explore and integrate various tools like **Moment.js**, **Mapbox**, **Swiper**, and others. Please refer to the dependency list for what’s included and being tested.
 
 ## Features
-- **Next.js 15**: Modern React framework with server-side rendering and static site generation.
-- **Material UI (MUI)**: UI components for a sleek and responsive design.
-- **Tailwind CSS**: Utility-first styling framework.
-- **Swiper.js**: Smooth and customizable carousels.
-- **TypeScript**: Strongly typed JavaScript for better maintainability.
+- **Next.js 15** – Latest React framework with support for server components and modern routing.
+- **Material UI (MUI)** – Sleek, responsive component library for rapid UI development.
+- **Tailwind CSS** – Utility-first styling for flexible and consistent design.
+- **Swiper.js** – Fast and mobile-friendly carousel/slider library.
+- **Mapbox GL** – Interactive maps with rich customization.
+- **Moment.js** – Powerful date/time handling.
+- **Wix Headless SDK** – Experimentation with CMS and APIs from Wix.
 
-## Installation
+## 🚀 Getting Started
 
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/your-username/my-class-pass.git
-   cd my-class-pass
+   cd my-class-pass 
    ```
 
 2. **Install dependencies:**
@@ -47,7 +51,16 @@ A **ClassPass clone** built with **Next.js** for personal use, intended to test 
   "@emotion/styled": "^11.14.0",
   "@mui/icons-material": "^6.4.6",
   "@mui/material": "^6.4.6",
+  "@wix/bookings": "^1.0.606",
+  "@wix/media": "^1.0.149",
+  "@wix/members": "^1.0.205",
+  "@wix/redirects": "^1.0.74",
+  "@wix/sdk": "^1.15.13",
   "clsx": "^2.1.1",
+  "cookie": "^1.0.2",
+  "js-cookie": "^3.0.5",
+  "mapbox-gl": "^3.10.0",
+  "moment": "^2.30.1",
   "next": "15.1.7",
   "react": "^19.0.0",
   "react-dom": "^19.0.0",
@@ -58,6 +71,7 @@ A **ClassPass clone** built with **Next.js** for personal use, intended to test 
 ## Dev Dependencies
 ```json
 {
+  "@types/js-cookie": "^3.0.6",
   "@types/node": "^20",
   "@types/react": "^19",
   "@types/react-dom": "^19",
