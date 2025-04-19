@@ -94,7 +94,7 @@ const HeaderNav: React.FC<HeaderNavProps> = ({ pathname, children }) => {
           <div className='flex text-2xl leading-[1.1111111111] items-center'>
             <Link href='/' className='ml-4 hidden md:block'>classpass</Link>
             {pathname === '/search' && (
-              <section className='p-4 flex w-full'>
+              <section className='p-4 flex w-full bg-white'>
                 <SearchBar />
                 <button
                   className='flex items-center sm:hidden bg-white border border-[#d6d6d6] rounded-[20px] shadow-[0_1px_2px_0_rgba(0,0,0,0.05)] h-10 leading-none ml-2 min-w-[60px] px-4 text-[#05f] text-sm font-semibold'

@@ -41,7 +41,11 @@ export interface CardProps {
 }
 
 export interface MapProps {
-  [key: string]: any;
+  data: any[],
+  withControls?: boolean,
+  dragPan?: bolean,
+  scrollZoom?: bolean,
+  className?: string,
 }
 
 export interface ImageCardProps {

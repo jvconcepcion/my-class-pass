@@ -23,9 +23,9 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// 🟢 Menu Provider
+// 🟢 Menu Provider for search
 export const MenuProvider = ({ children }: { children: ReactNode }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 

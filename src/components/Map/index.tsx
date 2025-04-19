@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+import clsx from 'clsx';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import { LocationData, MapProps, NormalizedLocation } from '@lib/types';
 import { Tooltip , ButtonGroup } from '@mui/material';
@@ -10,6 +11,7 @@ const Map: React.FC<MapProps> = ({
   withControls = true,
   dragPan = false,
   scrollZoom = false,
+  className = '',
  }) => {
   const [toggleDrag, setToggleDrag] = useState<boolean>(dragPan);
   const [toggleScroll, setToggleScroll] = useState<boolean>(scrollZoom);
@@ -169,7 +171,7 @@ const Map: React.FC<MapProps> = ({
   }, [toggleScroll]);
 
   return (
-    <div className='relative map-parent h-full w-full min-h-48 rounded overflow-hidden'>
+    <div className={clsx('relative map-parent h-full w-full min-h-48 overflow-hidden', className)}>
       {!toggleDrag && <div className='absolute top 0 w-full h-full z-10 bg-black/50 cursor-not-allowed'/>}
       <div ref={mapContainer} className='h-full w-full'/>
       <div className='absolute top-4 left-4 z-10 w-auto h-auto bg-white rounded'>
