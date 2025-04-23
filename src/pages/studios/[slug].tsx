@@ -102,13 +102,14 @@ const StudioPage = () => {
                   />
                 </p>
               </div>
-              <div className='sm:hidden py-6 border-b border-[#e7e7e7]'>
+              <div className='md:hidden py-6 border-b border-[#e7e7e7]'>
                 <StudioAddressCard 
+                  data={service}
                   width={400}
-                  height={140}  
+                  height={200}  
                 />
                 <div className='flex py-2'>
-                  <Svg component='address' />
+                  <Svg component='address' className='ml-2'/>
                   <p className='ml-4 text-sm'>{service?.locations[0].calculatedAddress.formatted}</p>
                 </div>
               </div>
@@ -141,7 +142,6 @@ const StudioPage = () => {
                 <Svg component='address' />
                 <p className='ml-4 text-sm'>{service?.locations[0].calculatedAddress.formatted}</p>
               </div>
-
             </div>
           </div>
         </div>

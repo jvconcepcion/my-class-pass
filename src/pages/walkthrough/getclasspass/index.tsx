@@ -45,10 +45,12 @@ export default function GetClassPass() {
   
   // Update swiper when activeIndex changes
   useEffect(() => {
+    const isDesktop = window.innerWidth >= 768;
+
     if (swiperMainRef.current && swiperMainRef.current.activeIndex !== activeIndex) {
       swiperMainRef.current.slideTo(activeIndex);
     }
-    if (swiperImageRef.current && swiperImageRef.current.activeIndex !== activeIndex) {
+    if (isDesktop && swiperImageRef.current && swiperImageRef.current.activeIndex !== activeIndex) {
       swiperImageRef.current.slideTo(activeIndex);
     }
   }, [activeIndex]);

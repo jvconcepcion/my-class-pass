@@ -166,7 +166,6 @@ const Map: React.FC<MapProps> = ({
 
   useEffect(() => {
     if (!map.current?.scrollZoom) return;
-    console.log(toggleScroll)
     toggleScroll ? map.current.scrollZoom.enable() : map.current.scrollZoom.disable();
   }, [toggleScroll]);
 

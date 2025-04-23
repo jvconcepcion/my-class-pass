@@ -139,7 +139,6 @@ const HeaderNav: React.FC<HeaderNavProps> = ({ pathname, children }) => {
             <Svg component='close' />
           </button>
 
-          {/* as follows */}
           <ul className='text-left mt-14 text-lg w-full'>
             <li className='border-b border-b-[#e7e7e7] p-4'>
               <Link href='/search'>Find classes & appointments</Link>
@@ -160,7 +159,7 @@ const HeaderNav: React.FC<HeaderNavProps> = ({ pathname, children }) => {
                 backgroundColor='#05f'
                 fontColor='white'
                 className='!rounded-full'
-                onClick={() => router.push('/member-signup/getclasspass')}
+                onClick={() => router.push('/walkthrough/getclasspass')}
               />
             </li>
           </ul> 
